@@ -1,0 +1,50 @@
+		I(x) = cos(2pifx + g(x))
+Si conocemos I(x) y me interesa g(x) parece que simplemente debemos aplicar un coseno inverso
+Entonces, 	g(x) = arcos(I(x)) - 2pifx		f---frecuencia
+
+NOTA: DESENVOLVIMIENTO DE FASE
+
+Cómo ya vimos siempre que se desea obtener la fase de una señal via una función arcos, arcsen, arctan;
+lo que obtenemos en realidad es la llamada fase envuelta. Esto es la fase real pero acotada en algún
+intervalo, este intervalo usualmente es:
+		-pi < fase real <= pi
+
+Por lo tanto, es necesario utilizar algún método de "desenvolvimiento"
+
+
+Una manera simple y muy elegante de desenvolver la fase es a través del método de Itoh.
+En este método se propone el uso de dos operadores:
+
+Operador Envolvimiento:
+	
+		W{phi(n)} = psi(n) = phi(n) + 2pik(n)		A psi(n) se le llama FASE ENVUELTA y phi(n) se le llama FASE REAL
+	donde k(n) es un arreglo de número enteros de manera que psi(n) esté acotada entre -pi y pi
+	Aquí phi(n) es la fase real discreta, psi(n) es la fase envuelta
+
+Por otra parte vamos a definir el operador DIFERENCIA
+		delta{phi(n)} = phi(n+1) - phi(n)
+
+---------MÉTODO DE ITOH-----------
+
+1) Aplicamos el operador diferencia sobre la fase envuelta:
+
+		delta{W{phi(n)}} = delta{phi(n) + 2pik(n)} = delta{phi(n)} + 2pi(delta{k(n)})
+Luego aplicamos el envolvimiento a esta diferencia:
+
+	W{ delta{W{phi(n)}} } = delta{W{phi(n)}} + 2pik_1(n) = delta{phi(n)} + 2pi(delta{k(n)}) + 2pik_1(n)	----(1)
+donde k_1(n) es un arrange de enteros de manera que:
+
+		-pi < delta{W{phi(n)}} + 2pik_1(n) <= pi
+		-pi < delta{phi(n)} + 2pi(delta{k(n)}) + 2pik_1(n) <= pi	-------(2)
+Si hacemos que -pi < delta{phi(n)} <= pi	///IMPORTANTE
+Entonces de (2) vamos que:
+		2pi(delta{k(n)}) + 2pik_1(n) = 0
+Luego de (1):
+		W{ delta{W{phi(n)}} } = delta{phi(n)} 
+
+Entonces:		///// phi(n+1) = phi(n) + W{delta{W{phi(n)}}} /////
+
+En otras palabras:		phi(n+1) = phi(n) + W{ psi(n+1)-psi(n) }
+				phi(n) = phi(1)+ sum(j=1 to n){psi(j+1) - psi(j)}	para n = 2,3,4,...N
+
+MATLAB: 		Delta = psi(2:N) - psi(1:N-1)

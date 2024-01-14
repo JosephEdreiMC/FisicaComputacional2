@@ -1,0 +1,53 @@
+Los modos normales de vibración dependen de los angulos de propagación de la luz
+Mayor es el modo normal (m entero) entonces mayor es el ángulo
+Los modos normales de vibración indican en donde se ubican los máximos y minimos de la irradiancia
+sintheta_m)
+Un modo normal de vibracion es un frente de onda transversal que no cambia de forma
+La velocidad de propagación depende del ángulo, al viajar a diferentes velocidades, a pesar de que los modos son frentes de onda que no cambian de forma,
+la suma de dos modos si cambia de forma con el tiempo, de forma periodica, debido a que la diferencia de velocidades cambia la manera en que interfieren entre ellas
+
+Capítulo 8 del libro. ----------------------------Fundamentals of Photonics, Bahaa E.A. Saleh, Malvin Carl Teich------------------
+Sea un cilindro dentro de otro, el cilindro interno tiene indice de refracción n_1 y el exterio n_2, con n_2 < n_1
+La relación es tal que se cumple con la reflección total interna (Ver Ley de Snell)
+	Ver Skew Rays
+Habrá un angulo máximo al cual podamos transmitir la luz, esta condición es la reflección total interna, llamaremos a los ángulos como ángulos
+de aceptancia
+	E_T=Ae^(i(wt-kcos(theta)z))
+
+Se ignora la parte temporal debido a la periodicidad de los modos de vibración
+Se espera que dentro del cilindro, para resolver la ecuación de helmholtz se tiene:
+E=U(r)e^(-il(phi))e^(-i(Beta)z) con l entero
+
+
+--------------PROBLEMA-------------
+Se tiene una familia de soluciones para las dos ecuaciones diferenciales, pero se debe tener continuidad en el paso del nucleo a la cubierta, además sus
+derivadas también deben ser iguales (8.1-15)
+Si encontramos las k_Ty gamma se ecnontrarán las ecuaciones de Bessel adecuadas
+
+Resolver ecuación 8.1-15
+
+Demostrar que la ecuación 8.1-15 se puede transformar en la 8.1-16
+Luego Determinar las X,Y que solucionan la ecuación 8.1-16 (Recordar que X^2+Y^2=V^2)
+
+Primero encontrar las 
+
+
+-------------------Valores que necesitaremos------------------------
+n_1=1.452  Nucleo
+n_2=1.451
+lambda_0=1.5micrometros
+a=26.6 micrometros--- radio del nucleo
+b=---radio de la cubierta
+
+
+-------------------Salida------------------
+X=(k_T)*a
+Y=(gamma)*a>0		X^2+Y^2=V^2;	=cteV=V(n_1,n_2,a)
+
+
+Enviar archivo
+Nombre:	Reto1_12.m
+	Reporte1_12.pdf		Resumen de lo visto de teoría, pseudocódigo,         
+juan.castillo@correo.buap.mx
+
+
