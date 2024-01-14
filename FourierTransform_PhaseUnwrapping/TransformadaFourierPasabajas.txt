@@ -1,0 +1,57 @@
+Cualquier imagen puede verse como una función f(x,y), por lo que podemos aplicarle la Transformada de Fourier
+Para aplicar la TdeF en Matlab se usa el comando fft2()
+Si le aplicamos la TdeF a una imagen obtendremos una nueva matriz, cyuas componentes serán (w_x,w_y,F)
+
+En general delta-ni_x es diferente de delta-ni_y
+Para N_x y N_y par:
+	delta-ni_x,max=(N_x/2-1)delta-ni_x
+	delta-ni_x,min=(-N_x/2)delta-ni_x
+
+	delta-ni_y,max=(N_y/2-1)delta-ni_y
+	delta-ni_y,min=(N_y/2-1)delta-ni_y
+
+fftshift(fft2(matriz))
+
+Con la transfromada de Fourier también nos permitirá suavizar las curvas de los datos experimentales
+Eliminando frecuencias alta, después de realizar la transformada de Fourier, usamos filtros que nos
+deja sólo con las frecuencias (altas, bajas o medias) que nos interesan
+
+Tenemos un espectro de la señal de entrada y un espectro de señal de salida, entiendase por espectro de señal como
+una gráfica A vs w con w las frecuencias y A la amplitud
+
+Sea Y(w) la señal de salida y U(w) la señal de entrada, entonces se cumple la siguiente relación:
+		Y(w)=H(w)U(w)		con H(w) llamada la función de transferencia (Esto sirve para sistemas lineales)
+
+		H(w)=Y(w)/U(w)		(1)	En el dominio de Fourier (Esto es importante)
+Supongamos un caso particular para la función de Transferencia:
+		H(w)=w_o/(iw + w_o)=1/(1+i(w/w_o))
+
+Así, esto es un filtro que deja pasar bajas frecuencias, bajas con respecto a w_o
+
+Existe una propiedad de la transformada de Fourier que dice que: La transformada de la n-esima derivada de una función
+es igual a (iw)^nF(w)		Revisar Wiki
+
+Luego, tenemos que:
+		(iw+w_o)Y(w)=w_oU(w)
+Luego, aplicamos la transformada de Fourier inversa
+		(dy/dt) + w_o y(t) = w_o u(t) 		(2)
+		
+Entonces, con la transformada de Fourier podemos pasar de una ecuación diferencial (2) a el dominio de Fourier (1)
+
+Rcordemos que Y(t) y U(t) son discretas, ya que las conocemos por medio de mediciones, así:
+	Y(t)=Y(q*delta_x)=Y^q y U(t)=U(q*delta)=U^q	Esto como notación
+
+Luego, en general f'(x_o)=( f(x_o+delta_x)-f(x_o) )/delta_x	///Aproximación con serie de Taylor
+Así:
+		(df/dt)|q = (f^(q+1)-f^q) / delta_t
+
+Finalmente, la ecuación diferencial original puede escribirse como:
+		( Y^(q+1)-Y^q )/delta_t + w_oY^q = w_oU^q
+Luego: 		Y^(q+1) = delta_t(w_oU^q) + (1-w_o(delta_t))Y^q		Esto debe ser la expresión númerica un filtro pasa-bajas
+Hacemos alpha=w_o*delta_t		alpha está en [0,1]
+		Y^(q+1) = alpha(U^q) + (1-alpha)Y^q	
+
+PROGRAMAREMOS la expresión anterior para así limpiar el ruido de un sistema lineal cualquiera.
+
+
+
