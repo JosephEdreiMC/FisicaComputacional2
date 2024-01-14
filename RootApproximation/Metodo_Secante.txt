@@ -1,0 +1,30 @@
+Recordemos del método de falsa posición la ecuación de recurrencia:
+	x_r=(cf(a)-af(c))/(f(a)-f(c)) ///(A)
+Luego de (A) sumandoy restando af(a)/(f(a)-f(c)) se obtiene:
+	x_r=a-f(a)(c-a)/(f(c)-f(a)) ----Se parece a Newton/Raphson con f'=(f(c)-f(a))/(c-a)
+
+En otras palabras, con la expresión anterior podemos generar un método alternativo para hallar la raiz de f(x)
+	x_n+1=x_n-f(x_n)/f'
+Donde tomamos f' entre valores consecutivos es la aproximación:
+	f'=(f(c)-f(a))/(c-a)	ent,	f'=(f(x_[n])-f(x_[n-1]))/(x_[n]-x_[n-1])
+La última expresión puede ser vista como el equivalente de 
+
+
+-------------PSEUDOCÓDIGO-------------------------
+1)Entragar f(x), x_[n], x_[n-1]
+2)Determinamos el Error por primera vez:
+	x_[n+1]=x_[n]-f(x_[n])/f' con f'=(f(x_[n])-f(x_[n-1]))/(x_[n]-x_[n-1])
+	Error=abs((x[n+1-x[n])/x_[n+1])
+3)Mientras Error>Tol && numIter>numMaxIter
+	x_[n+1]=x_[n]-f(x_[n])/f'
+	f'=(f(x_[n])-f(x_[n-1]))/(x_[n]-x_[n-1])
+Determino el Error:
+	Error=abs((x[n+1-x[n])/x_[n+1])
+Nos preparamos para la siguiente iteración:
+	x_[n-1]=x_[n]
+	x_[n]=x_[n+1]
+Aumentamos numIter
+4)If Error<Tol
+	x_[r]=x_[n+1]
+Else
+	Mensaje de error, se salió por superar el numMaxIter

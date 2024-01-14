@@ -1,0 +1,22 @@
+22/02/19
+Método de la Falsa Posición. (Variante del método de la bisección)
+En vez de dividir los intervalos a la mitad cada vez como en bisección usamos 
+los extremos del intervalo [a,c] y trazamos una recta entre f(a) y f(c), luego vemos
+donde esa recta cruza el eje (recta(x_r)=0), entonces ahora trazamos una recta entre
+f(x_r) y f(a) o f(c) //Esto dependerá del cambio de signo, evidentemente, para que así
+			la nueva recta pasará por lo menos alguna vez en por el eje
+
+Este es una variante del método de la Bisección. Aqui en lugar de dividir el intervalo
+a la mitad se propone usar una línea recta que pase por los extremos del intervalo, es
+decir, si los puntos en los extremos de la función tiene coordenadas:
+(a,f(a)) y (c,f(c))
+Por lo tanto, la recta que pasa por estos dos puntos es:
+y-f(a)=(f(a)-f(c))/(a-c) (x-a), es decir y=(x-c)f(a)/(a-c) + (x-a)f(c)/(c-a) // (1)
+Y dado que necesitamos el punto en que la función atraviesa el eje hacemos y=0
+
+Si pensamos que una buena aproximación de la raiz que buscamos es la raiz de la
+ecuación (1) entonces
+0=(x_r-c)f(a)/(a-c) + (x_r-a)f(c)/(c-a)
+x_r=(cf(a)-af(c))/(f(a)-f(c))
+
+Y con esto se repite el procedimiento del método de la Bisección

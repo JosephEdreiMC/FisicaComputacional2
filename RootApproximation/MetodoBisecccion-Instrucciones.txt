@@ -1,0 +1,8 @@
+%Metodo para encontrar las raices de una funcion. Partiendo intervalos a la
+%mitad cada vez
+%1)Definir un intervalo incial que CONTENGA la raiz que se busca
+%2)Dividir a la MITAD el intervalo
+%3)DETERMINAR la ubicacion de la raiz en los nuevos subintervalos
+%4)REDEFINIMOS limites superior o inferior del nuevo intervalo
+%5)Tenemos el ERROR buscado SI-detener proceso. NO-continuar
+%6)Ir al paso 2

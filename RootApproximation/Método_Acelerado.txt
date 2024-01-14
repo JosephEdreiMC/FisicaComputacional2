@@ -1,0 +1,32 @@
+Los métodos de NR, Falsa posición y Secante requieren de una recta para aproximar la x tal que es raiz.
+Es evidente que una ecuación cuadrática en vez de una recta podemos acelerar el proceso de aproximación.
+	Esto es llamado "El método acelerado"
+Para definir a una parábola se requieren tres puntos, esto se traduce en tres aproximaciones sucesivas de
+la raiz buscada, estás aproximaciones son x_0, x_1, x_2
+Así p(x)=ax^2+bx+c es una parábola, pero no una parábola en general, para ello se requeriría traslación y rotación en el plano
+Recuerda que la ecuación más general de una conica en el plano es: Ax^2+By^2+Cxy+Dx+Ey+F=0
+Así, no basta con la p(x) anterior, si aumentamos un término para la traslación tendremos
+	p(x)=a(x-x_2)^2+b(x-x_2)+c
+Esta parábola debe cumplir que:
+1) f(x_0)=p(x_0)=a(x_0-x_2)^2+b(x_0-x_2)+c
+2) f(x_1)=p(x_1)=a(x_1-x_2)^2+b(x_1-x_2)+c	El cual es un sistema de ecuaciones para a,b,c
+3) f(x_2)=p(x_2)=c
+
+Sustituyendo 3) en 1) y 2), luego resolvemos para a y b, obteniendo lo que está en el libro en la página 72 (2.45)
+Ahora necesitamos hallar x_3 tq. p(x_3)=0, es decir
+	p(x_3)=0=a(x_3-x_2)^2+b(x_3-x_2)+c
+Entonces resolvemos para (x_3-x_2) con la fórmula general de la cuadrática, obteniendo así el valor de x_3
+x_3=x_2+{[-b +/- sqt(b^2-4ac)]/2a}	(A)
+La ecuación (A) permite determinar la nueva aproximación x_3, pero para evaluarla se requiere determinar que signo del radical
+debe usarse. Para esto es importante notar que la diferencia x_3-x_2 siempre debe disminuir
+Por lo tanto, debemos elegir el signo del radical de manera que siempre exista una diferencia:
+	Si b>0
+		x_3=x_2+{[-b + sqt(b^2-4ac)]/2a}
+	si b<0
+		x_3=x_2+{[-b - sqt(b^2-4ac)]/2a}
+
+Finalmente: x_3=x_2+[-2c/(b+sqrt(b^2-4ac))]; b>0
+	    x_3=x_2+[-2c/(-b+sqrt(b^2-4ac))]; b<0
+
+-------------------ESTRATEGIA--------------------------
+Se proporcionan tres aproximaciones de la raiz 

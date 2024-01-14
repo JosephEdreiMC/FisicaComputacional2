@@ -1,0 +1,25 @@
+Método de Newton-Raphson
+Hasta este momento tenemos un algoritmo que nos permite encontrar
+la raiz de una función, pero es MUY LENTO
+La pregunta inmediata es ¿Podemos crear un algoritmo que sea más rápido?
+La respuesta es SÍ, por medio de la serie de Taylor
+Usando la serie de Taylor alrededor de un punto x=a en una función f(x)
+Si usamos solamente los dos primeros términos de la serie
+i.e. f(x)=f(a)+(x-a)f'(a) ... A
+Si usamos A como una aproximación de f(x), ent. f(x_n+1)=0=f(a)+(x_n+1-a)(f'a) ///Esto es lo importante
+de aquí obtenemos x_n+1
+x_n+1=a-f(a)/f'(a)
+x_n+1=x_n-f(x_n)/f'(x_n)
+
+///PSEUDOCÓDIGO
+Error=(x_n+1-x_n)/x_n+1) y esto converge , a cero cuando n=inf.
+1)Inicializamos nuestras variables
+2)Evaluamos Error
+	Error=(x_n+1-x_n)/x_n+1
+3)Si Error>Tolerancia y c<Numero Maximo de iteraciones
+	x_n+1=x_n-f(x_n)/f'(x_n)
+	Error=(x_n+1-x_n)/x_n+1)
+	Regresar a (3)
+No, entonces Error<Tolerancia
+	Si:x_r=x_n+1
+	No Mensaje de error //Porque supere el numero maximo de iteraciones
